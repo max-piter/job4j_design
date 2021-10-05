@@ -1,8 +1,6 @@
 package ru.job4j.it;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Класс - итератор для двухмерного массива int[][] который последовательно
@@ -33,10 +31,8 @@ import java.util.NoSuchElementException;
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-
             return data[row][column++];
         }
-
     }
 
 
