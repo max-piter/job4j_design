@@ -7,7 +7,6 @@ package ru.job4j.generics;
  */
 public class UserStore implements Store<User> {
 
-
     /**
      * Хранилище  по шаблону интерфейса Store для объектов типа User
      * объект класса MemStore

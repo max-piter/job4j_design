@@ -29,7 +29,6 @@ public class User extends Base {
         return name;
     }
 
-
     /**
      * Устанавливает значение  private поля  String  name.
      *

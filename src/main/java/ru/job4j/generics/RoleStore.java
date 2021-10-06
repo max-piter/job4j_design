@@ -41,6 +41,7 @@ public class RoleStore implements Store<Role> {
         return rStore.delete(id);
     }
 
+
     /**
      * метод осуществляет поиск элемента по id
      * @param id - id of element we need to find
