@@ -4,7 +4,6 @@ import java.util.*;
 /**
  * The type Simple array list.
  * Класс - реализация списка на основе динамического массива, аналог ArrayList
- *
  * @param <T> the type parameter
  */
 public class SimpleArrayList<T> implements List<T> {
@@ -28,13 +27,12 @@ public class SimpleArrayList<T> implements List<T> {
     /**
      * конструктор принимает 1 параметр - первоначальную длину массива
      * устанавливает на ноль размер листа и счётчик операций
-     *
      * @param capacity - принимает в качестве параметра первоначальную длину массива
      */
     public SimpleArrayList(int capacity) {
         this.container = (T[]) new Object[capacity];
-        size = 0;
-        modCount = 0;
+        this.size = 0;
+        this.modCount = 0;
     }
 
 
@@ -48,12 +46,21 @@ public class SimpleArrayList<T> implements List<T> {
     @Override
     public void add(T value) {
         modCount++;
-        if (size == container.length) {
-            container = Arrays.copyOf(container, container.length * 2);
-        }
+        increaseArray(size);
         container[size] = value;
         size++;
         modCount++;
+    }
+
+    /**
+     * метод увеличивает массив в 2 раза
+     * @param size - аргумент типа int, который мы сравниваем с длиной массива
+     *
+     */
+    public void increaseArray(int size) {
+        if (size == container.length) {
+            container = Arrays.copyOf(container, container.length * 2);
+        }
     }
 
     /**
