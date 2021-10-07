@@ -45,8 +45,9 @@ public class SimpleArrayList<T> implements List<T> {
      */
     @Override
     public void add(T value) {
-        modCount++;
-        increaseArray(size);
+        if (size == container.length) {
+           container = increaseArray(container);
+        }
         container[size] = value;
         size++;
         modCount++;
@@ -54,13 +55,16 @@ public class SimpleArrayList<T> implements List<T> {
 
     /**
      * метод увеличивает массив в 2 раза
-     * @param size - аргумент типа int, который мы сравниваем с длиной массива
+     * @param array - аргумент типа int, который мы сравниваем с длиной массива
      *
      */
-    public void increaseArray(int size) {
-        if (size == container.length) {
-            container = Arrays.copyOf(container, container.length * 2);
+    public T[] increaseArray(T[] array) {
+        T[] conteiner = (T[]) new Object[array.length * 2];
+        for (int i = 0; i < array.length; i++) {
+            conteiner[i] = array[i];
         }
+        array = conteiner;
+        return array;
     }
 
     /**
