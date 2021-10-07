@@ -55,4 +55,16 @@ public class UserStore implements Store<User> {
     public User findById(String id) {
         return uStore.findById(id);
     }
+
+    @Override
+    public void print() {
+        uStore.print();
+    }
+
+    @Override
+    public String toString() {
+        return "UserStore{"
+               + "uStore=" + uStore
+               + '}';
+    }
 }

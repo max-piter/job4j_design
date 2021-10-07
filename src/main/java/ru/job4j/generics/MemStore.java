@@ -1,4 +1,5 @@
 package ru.job4j.generics;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,5 +58,12 @@ public final class MemStore<T extends Base> implements Store<T> {
     @Override
     public T findById(String id) {
       return mem.get(id);
+    }
+
+    @Override
+    public void print() {
+        for (String el: mem.keySet()) {
+            System.out.println(mem.get(el));
+        }
     }
 }
