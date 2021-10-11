@@ -3,6 +3,7 @@ package ru.job4j.collection.list;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 import static org.junit.Assert.*;
@@ -85,5 +86,24 @@ public class SimpleLinkedListTest {
         assertThat(second.hasNext(), Is.is(true));
         assertThat(second.next(), Is.is(2));
         assertThat(second.hasNext(), Is.is(false));
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void whenListChange() {
+        SimpleLinkedList<Integer> list = new SimpleLinkedList<>();
+        list.add(1);
+        list.add(2);
+        Iterator<Integer> it = list.iterator();
+        list.add(3);
+        it.next();
+    }
+
+    @Test
+    public void whenAdd3Get1() {
+        SimpleLinkedList<Integer> list = new SimpleLinkedList<>();
+        list.add(1);
+        list.add(2);
+        list.add(4);
+        assertThat(list.get(2), Is.is(4));
     }
 }
