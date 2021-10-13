@@ -5,7 +5,6 @@ import ru.job4j.collection.list.ForwardLinked;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 

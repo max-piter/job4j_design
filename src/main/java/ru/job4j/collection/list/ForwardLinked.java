@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
  * @param <T> the type parameter
  */
 public class ForwardLinked<T> implements Iterable<T> {
+
     /**
      * ссылка на первый элемент контейнера
      */
