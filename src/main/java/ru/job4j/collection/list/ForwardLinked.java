@@ -34,20 +34,21 @@ public class ForwardLinked<T> implements Iterable<T> {
 
 
     /**
-     * deleteFirst - метод  удаляет первый элемент
-     * создаём Ноду и присваиваем ей значение Ноды head, чтобы потом  вернуть её значение.
-     * head  -  присваиваем значение ссылки head.next, если она есть.
-     * таким образом Нода, которая находилась по ссылке head.next, становится первым элементом.
-     *
+     * deleteFirst - метод  удаляет первый элемент с помощью  обнуления ссылки на следующий
      * @return возвращает значение удалённой Ноды
      */
     public T deleteFirst() {
         if (head == null) {
             throw new NoSuchElementException();
         }
-        Node<T> newNode = head;
-        head = head.next;
-        return newNode.value;
+        T deletedValue = head.value;
+        if (head.next == null) {
+            head = null;
+        } else {
+            head = head.next;
+            head.next = null;
+        }
+        return deletedValue;
     }
 
 
