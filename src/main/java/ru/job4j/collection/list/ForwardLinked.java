@@ -42,6 +42,29 @@ public class ForwardLinked<T> implements Iterable<T> {
 
 
     /**
+     * метод  revert - метод  оборачивает  односвязный список путём замены ссылок
+     *
+     * @return the boolean
+     */
+    public boolean revert() {
+        if (head != null) {
+            if (head.next != null) {
+                Node<T> current = head.next;
+                head.next = null;
+                while (current != null) {
+                    Node<T> next = current.next;
+                    current.next = head;
+                    head = current;
+                    current = next;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
      * deleteFirst - метод  удаляет первый элемент с помощью  обнуления ссылки на следующий
      * @return возвращает значение удалённой Ноды
      */
@@ -58,8 +81,6 @@ public class ForwardLinked<T> implements Iterable<T> {
         }
         return deletedValue.value;
     }
-
-
 
     /**
      * Итератор класса
