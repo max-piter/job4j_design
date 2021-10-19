@@ -1,6 +1,5 @@
 package ru.job4j.iterator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Objects;
@@ -23,6 +22,7 @@ public class ListUtils {
     public static <T> void addAfter(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
         ListIterator<T> l = list.listIterator();
+        if (list.size() - 1 != index) {
         while (l.hasPrevious()) {
             if (l.previousIndex() == index) {
                 l.add(value);
@@ -30,18 +30,36 @@ public class ListUtils {
             }
             l.previous();
         }
+        } else  {
+            list.add(list.size(), value);
+        }
     }
 
     public static <T> void removeIf(List<T> list, Predicate<T> filter) {
-     
+       ListIterator<T> l = list.listIterator();
+       while (l.hasNext()) {
+           T element = l.next();
+          if (filter.test(element)) {
+              l.remove();
+          }
+       }
 
     }
 
     public static <T> void replaceIf(List<T> list, Predicate<T> filter, T value) {
-
+        ListIterator<T> l = list.listIterator();
+        while (l.hasNext()) {
+            T element = l.next();
+            if (filter.test(element)) {
+                l.set(value);
+            }
+        }
     }
 
     public static <T> void removeAll(List<T> list, List<T> elements) {
-
+        ListIterator<T> l = elements.listIterator();
+        while (l.hasNext()) {
+            list.remove(l.next());
+        }
     }
 }
