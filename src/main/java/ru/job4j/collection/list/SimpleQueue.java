@@ -1,5 +1,7 @@
 package ru.job4j.collection.list;
 
+import java.util.NoSuchElementException;
+
 /**
  * класс SimpleQueue - реализация очереди(FIFO) на базе двух  стеков (LIFO)
  * принцип FIFO реализуется следующим образом: входящие элементы сохраняется в первом стеке
@@ -20,6 +22,9 @@ public class SimpleQueue<T> {
      * @return удалённый элемент
      */
     public T poll() {
+        if (in.isEmpty() && out.isEmpty()) {
+            throw new NoSuchElementException();
+        }
         if (out.isEmpty()) {
             while (!in.isEmpty()) {
                 out.push(in.pop());
