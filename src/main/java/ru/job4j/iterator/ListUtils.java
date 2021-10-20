@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 public class ListUtils {
 
     /**
-     * Add before. метод  добавляет объект перед указанным индексом
+     * addBefore. метод  добавляет объект перед указанным индексом
      *
      * @param <T>   the type parameter
      * @param list  коллекция
@@ -31,7 +31,7 @@ public class ListUtils {
     }
 
     /**
-     * Add after -  метод добавляет объект в коллекцию  после заданного индекса
+     * addAfter -  метод добавляет объект в коллекцию  после заданного индекса
      *
      * @param <T>   the type parameter
      * @param list  коллекция
@@ -55,7 +55,7 @@ public class ListUtils {
     }
 
     /**
-     * Remove if метод удаляет элементы  удовлетворяющие условию, указанному в предикате
+     * removeIf метод удаляет элементы  удовлетворяющие условию, указанному в предикате
      * @param <T>    the type parameter
      * @param list   коллекция элементов
      * @param filter предикат,  по которому определяют удаляемый объект
@@ -72,7 +72,7 @@ public class ListUtils {
     }
 
     /**
-     * Replace if метод заменяет объект удолетворяющий предикату на другой
+     * replaceIf метод заменяет объект удолетворяющий предикату на другой
      *
      * @param <T>    the type parameter
      * @param list   коллеция объектов типа Т
@@ -90,7 +90,7 @@ public class ListUtils {
     }
 
     /**
-     * Remove all метод удаляет из  коллекции все элементы, которые помещены в другую коллекцию
+     * removeAll метод удаляет из  коллекции все элементы, которые помещены в другую коллекцию
      *
      * @param <T>      the type parameter
      * @param list     коллеция из  которой необходимо удалить элементы
