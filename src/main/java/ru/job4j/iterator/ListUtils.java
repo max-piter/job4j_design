@@ -1,8 +1,6 @@
 package ru.job4j.iterator;
 
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Predicate;
 
 /**
@@ -11,7 +9,7 @@ import java.util.function.Predicate;
 public class ListUtils {
 
     /**
-     * addBefore. метод  добавляет объект перед указанным индексом
+     * addBefore метод  добавляет объект перед указанным индексом
      *
      * @param <T>   the type parameter
      * @param list  коллекция
@@ -20,14 +18,8 @@ public class ListUtils {
      */
     public static <T> void addBefore(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
-        ListIterator<T> i = list.listIterator();
-        while (i.hasNext()) {
-            if (i.nextIndex() == index) {
-                i.add(value);
-                break;
-            }
-            i.next();
-        }
+        ListIterator<T> listIter = list.listIterator(index);
+        listIter.add(value);
     }
 
     /**
@@ -40,18 +32,8 @@ public class ListUtils {
      */
     public static <T> void addAfter(List<T> list, int index, T value) {
         Objects.checkIndex(index, list.size());
-        ListIterator<T> l = list.listIterator();
-        if (list.size() - 1 != index) {
-        while (l.hasPrevious()) {
-            if (l.previousIndex() == index) {
-                l.add(value);
-                break;
-            }
-            l.previous();
-        }
-        } else  {
-            list.add(list.size(), value);
-        }
+        ListIterator<T> listIter = list.listIterator(index + 1);
+        listIter.add(value);
     }
 
     /**
@@ -61,11 +43,11 @@ public class ListUtils {
      * @param filter предикат,  по которому определяют удаляемый объект
      */
     public static <T> void removeIf(List<T> list, Predicate<T> filter) {
-       ListIterator<T> l = list.listIterator();
-       while (l.hasNext()) {
-           T element = l.next();
+       ListIterator<T> listIter = list.listIterator();
+       while (listIter.hasNext()) {
+           T element = listIter.next();
           if (filter.test(element)) {
-              l.remove();
+              listIter.remove();
           }
        }
 
@@ -80,11 +62,11 @@ public class ListUtils {
      * @param value  объект, который необходимо поместить на место удалённого
      */
     public static <T> void replaceIf(List<T> list, Predicate<T> filter, T value) {
-        ListIterator<T> l = list.listIterator();
-        while (l.hasNext()) {
-            T element = l.next();
+        ListIterator<T> listIter = list.listIterator();
+        while (listIter.hasNext()) {
+            T element = listIter.next();
             if (filter.test(element)) {
-                l.set(value);
+                listIter.set(value);
             }
         }
     }
@@ -97,9 +79,9 @@ public class ListUtils {
      * @param elements коллекция элементов,  которые необходимо удалить.
      */
     public static <T> void removeAll(List<T> list, List<T> elements) {
-        ListIterator<T> l = elements.listIterator();
-        while (l.hasNext()) {
-            list.remove(l.next());
+        ListIterator<T> listIter = elements.listIterator();
+        while (listIter.hasNext()) {
+            list.remove(listIter.next());
         }
     }
 }
