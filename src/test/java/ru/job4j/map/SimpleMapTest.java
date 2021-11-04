@@ -5,14 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.Iterator;
 
+
 public class SimpleMapTest {
 
     Map<String, String> map;
-    Map<String, String> EmptyMap;
 
     @Before
     public void startTest() {
-        EmptyMap = new SimpleMap<>();
         map =  new SimpleMap<>();
         map.put("1", "1");
         map.put("2", "2");
@@ -66,6 +65,22 @@ public class SimpleMapTest {
 
     @Test
     public void whenIterator() {
-        Assert.assertFalse(EmptyMap.iterator().hasNext());
+        map.remove("1");
+        map.remove("2");
+        map.remove("3");
+        map.remove("4");
+        map.remove("5");
+        map.remove("6");
+        map.remove("7");
+        map.remove("8");
+        map.remove("9");
+        map.remove("10");
+        map.remove("11");
+        map.remove("12");
+        map.remove("13");
+        map.remove("wex");
+        map.remove("kex");
+        map.remove("fex");
+        Assert.assertFalse(map.iterator().hasNext());
     }
 }

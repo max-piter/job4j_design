@@ -13,11 +13,8 @@ public class SimpleMap<K, V> implements Map<K, V> {
     private int capacity = 8;
     private int count = 0;
     private int modCount = 0;
-    private MapEntry<K, V>[] table;
+    private MapEntry<K, V>[] table = new MapEntry[capacity];
 
-    public SimpleMap() {
-        table = new MapEntry[8];
-    }
 
     /**
      * метод put(K key, V value) - добавляет элемент в мапу
@@ -32,20 +29,12 @@ public class SimpleMap<K, V> implements Map<K, V> {
         if (count >= threshold) {
             expand();
         }
-
-        MapEntry<K, V> newMap =  new MapEntry(key, value);
-        int index = indexFor(hash(newMap.key.hashCode()));
+        int index = indexFor(hash(key.hashCode()));
         if (table[index] == null) {
-            table[index] = newMap;
-            ifPutSuccess = true;
-            modCount++;
+            table[index] = new MapEntry<>(key, value);
             count++;
-        } else if (newMap.key.hashCode() == table[index].key.hashCode()) {
-                if (newMap.key.equals(table[index].key) && !newMap.value.equals(table[index].value)) {
-                    table[index].value = newMap.value;
-                    ifPutSuccess = true;
-                    modCount++;
-                }
+            modCount++;
+            ifPutSuccess = true;
         }
 
         return ifPutSuccess;
@@ -80,7 +69,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     private void expand() {
         capacity *= 2;
         MapEntry<K, V>[] oldTable = table;
-        table =  new MapEntry[oldTable.length * 2];
+        table =  new MapEntry[capacity];
         count = 0;
         for (MapEntry<K, V> baket: oldTable) {
             if (baket != null) {
@@ -124,28 +113,28 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     @Override
-    public Iterator iterator() {
-        return new Iterator() {
+    public Iterator<K> iterator() {
+        return new Iterator<>() {
             final int expectedModCount = modCount;
-            final MapEntry<K, V>[] fullMapp = Arrays.stream(table)
+            final MapEntry<K, V>[] fullMap = Arrays.stream(table)
                     .filter(Objects::nonNull)
                     .toArray(MapEntry[] :: new);
             int point = 0;
 
             @Override
             public boolean hasNext() {
-                return point  < fullMapp.length;
+                return point  < fullMap.length;
             }
 
             @Override
-            public Object next() {
+            public K next() {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return fullMapp[point++].key;
+                return fullMap[point++].key;
             }
         };
     }
@@ -159,33 +148,5 @@ public class SimpleMap<K, V> implements Map<K, V> {
             this.key = key;
             this.value = value;
         }
-
-        @Override
-        public String toString() {
-            return "MapEntry{"
-                    + "key=" + key
-                    + ", value=" + value
-                    + '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (!(o instanceof MapEntry)) {
-                return false;
-            }
-            MapEntry<?, ?> mapEntry = (MapEntry<?, ?>) o;
-            return Objects.equals(key, mapEntry.key)
-                    && Objects.equals(value, mapEntry.value);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(key, value);
-        }
     }
-
-
 }
