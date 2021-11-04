@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.Iterator;
 
-
 public class SimpleMapTest {
 
     Map<String, String> map;
