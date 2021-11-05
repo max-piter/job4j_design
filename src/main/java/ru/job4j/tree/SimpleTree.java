@@ -24,9 +24,9 @@ public class SimpleTree<E> implements Tree<E> {
     @Override
     public boolean add(E parent, E child) {
         boolean rsl = false;
-        if (findBy(parent).isPresent() && findBy(child).isEmpty()) {
-                Node<E> newChild = new Node<>(child);
-                findBy(parent).get().children.add(newChild);
+        Optional<Node<E>> prnt = findBy(parent);
+        if (prnt.isPresent() && findBy(child).isEmpty()) {
+                prnt.get().children.add(new Node<>(child));
                 rsl = true;
              }
         return rsl;
@@ -36,9 +36,6 @@ public class SimpleTree<E> implements Tree<E> {
     public Optional<Node<E>> findBy(E value) {
        return findByPredicate(Node -> Node.value.equals(value));
     }
-
-
-
 
     private Optional<Node<E>> findByPredicate(Predicate<Node<E>> condition) {
         Optional<Node<E>> rsl = Optional.empty();
@@ -62,6 +59,6 @@ public class SimpleTree<E> implements Tree<E> {
      */
     @Override
     public boolean isBinary() {
-       return findByPredicate(Node -> Node.children.size() <= 2).isPresent();
+        return findByPredicate(Node -> Node.children.size() <= 2).isPresent();
     }
 }
