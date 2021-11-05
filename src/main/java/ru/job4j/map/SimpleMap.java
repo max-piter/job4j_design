@@ -116,14 +116,15 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
             @Override
             public boolean hasNext() {
+                if (expectedModCount != modCount) {
+                    throw new ConcurrentModificationException();
+                }
                 return point  < count;
             }
 
             @Override
             public K next() {
-                if (expectedModCount != modCount) {
-                    throw new ConcurrentModificationException();
-                }
+
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
