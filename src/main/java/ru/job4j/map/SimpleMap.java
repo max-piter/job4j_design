@@ -15,7 +15,6 @@ public class SimpleMap<K, V> implements Map<K, V> {
     private int modCount = 0;
     private MapEntry<K, V>[] table = new MapEntry[capacity];
 
-
     /**
      * метод put(K key, V value) - добавляет элемент в мапу
      * @param key -  key
