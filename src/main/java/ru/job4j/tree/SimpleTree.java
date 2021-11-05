@@ -23,11 +23,10 @@ public class SimpleTree<E> implements Tree<E> {
      */
     @Override
     public boolean add(E parent, E child) {
-        boolean rsl = false;
         Optional<Node<E>> prnt = findBy(parent);
-        if (prnt.isPresent() && findBy(child).isEmpty()) {
+        boolean rsl = prnt.isPresent() && findBy(child).isEmpty();
+        if (rsl) {
                 prnt.get().children.add(new Node<>(child));
-                rsl = true;
              }
         return rsl;
     }
@@ -35,7 +34,7 @@ public class SimpleTree<E> implements Tree<E> {
 
     @Override
     public Optional<Node<E>> findBy(E value) {
-       return findByPredicate(Node -> Node.value.equals(value));
+        return findByPredicate(Node -> Node.value.equals(value));
     }
 
     private Optional<Node<E>> findByPredicate(Predicate<Node<E>> condition) {
