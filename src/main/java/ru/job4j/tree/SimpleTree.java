@@ -32,6 +32,7 @@ public class SimpleTree<E> implements Tree<E> {
         return rsl;
     }
 
+
     @Override
     public Optional<Node<E>> findBy(E value) {
        return findByPredicate(Node -> Node.value.equals(value));
