@@ -111,14 +111,12 @@ public class SimpleMap<K, V> implements Map<K, V> {
     public Iterator<K> iterator() {
         return new Iterator<>() {
             final int expectedModCount = modCount;
-            final MapEntry<K, V>[] fullMap = Arrays.stream(table)
-                    .filter(Objects::nonNull)
-                    .toArray(MapEntry[] :: new);
             int point = 0;
+            int index = 0;
 
             @Override
             public boolean hasNext() {
-                return point  < fullMap.length;
+                return point  < count;
             }
 
             @Override
@@ -129,7 +127,11 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return fullMap[point++].key;
+                while (table[index] == null) {
+                    index++;
+                }
+                point++;
+                return table[index++].key;
             }
         };
 

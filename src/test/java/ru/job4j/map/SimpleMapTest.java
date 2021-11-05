@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SimpleMapTest {
 
@@ -62,24 +63,19 @@ public class SimpleMapTest {
         Assert.assertTrue(iterator.hasNext());
     }
 
-    @Test
-    public void whenIterator() {
-        map.remove("1");
-        map.remove("2");
-        map.remove("3");
-        map.remove("4");
-        map.remove("5");
-        map.remove("6");
-        map.remove("7");
-        map.remove("8");
-        map.remove("9");
-        map.remove("10");
-        map.remove("11");
-        map.remove("12");
-        map.remove("13");
-        map.remove("wex");
-        map.remove("kex");
-        map.remove("fex");
-        Assert.assertFalse(map.iterator().hasNext());
+    @Test (expected = NoSuchElementException.class)
+    public void whenIteratorNoSuchElement() {
+        SimpleMap<String, String> run = new SimpleMap<>();
+        run.put("1", "1");
+        run.put("2", "2");
+        run.put("3", "3");
+        Iterator<String> it = run.iterator();
+        Assert.assertTrue(it.hasNext());
+        it.next();
+        Assert.assertTrue(it.hasNext());
+        it.next();
+        Assert.assertTrue(it.hasNext());
+        it.next();
+        it.next();
     }
 }
