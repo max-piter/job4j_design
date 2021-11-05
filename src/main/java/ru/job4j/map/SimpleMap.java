@@ -25,8 +25,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public boolean put(K key, V value) {
         boolean ifPutSuccess = false;
-        float threshold = table.length * LOAD_FACTOR;
-        if (count >= threshold) {
+        if ((float) count / capacity >= LOAD_FACTOR) {
             expand();
         }
         int index = indexFor(hash(key.hashCode()));
@@ -85,12 +84,9 @@ public class SimpleMap<K, V> implements Map<K, V> {
      * @return возвращиет значение (value), если оно существует и null, если его нет
      */
     @Override
-    public V get(Object key) {
+    public V get(K key) {
         int index = indexFor(hash(key.hashCode()));
-        if (table[index] != null) {
-          return  table[index].value;
-        }
-        return null;
+        return table[index] != null ? table[index].value : null;
     }
 
     /**
