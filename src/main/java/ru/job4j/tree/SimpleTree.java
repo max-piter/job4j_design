@@ -1,9 +1,11 @@
 package ru.job4j.tree;
 
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.Queue;
+import java.util.*;
 
+/**
+ * The type Simpletree - реализация класса Simpletree на базе бинарного дерева
+ * @param <E> the type parameter
+ */
 public class SimpleTree<E> implements Tree<E> {
     private final Node<E> root;
 
@@ -11,18 +13,20 @@ public class SimpleTree<E> implements Tree<E> {
         this.root = new Node<>(root);
     }
 
+    /**
+     * метод add(E parent, E child) - добавляет ребёнка по родителю
+     * @param parent - родитель
+     * @param child ребёнок
+     * @return true/false
+     */
     @Override
     public boolean add(E parent, E child) {
         boolean rsl = false;
-        Optional<Node<E>> prnt = findBy(parent);
-        Optional<Node<E>> chld = findBy(child);
-        if (prnt.isPresent()) {
-            if (chld.isEmpty()) {
+        if (findBy(parent).isPresent() && findBy(child).isEmpty()) {
                 Node<E> newChild = new Node<>(child);
-                prnt.get().children.add(newChild);
+                findBy(parent).get().children.add(newChild);
                 rsl = true;
              }
-        }
         return rsl;
     }
 
