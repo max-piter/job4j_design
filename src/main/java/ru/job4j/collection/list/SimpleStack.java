@@ -1,7 +1,7 @@
 package ru.job4j.collection.list;
 
 /**
- * The type SimpleЫtack - класс реализация структуры хранения Stack
+ * The type SimpleStack - класс реализация структуры хранения Stack
  * на базе односвязного списка.
  * Добавляем в начало, берём тоже сначала
  *

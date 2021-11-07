@@ -39,6 +39,7 @@ public class SimpleQueue<T> {
      * @param value  - элемент который необходимо добавить
      */
     public void push(T value) {
+
         in.push(value);
     }
 }
