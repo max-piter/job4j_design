@@ -1,7 +1,6 @@
 package ru.job4j.question;
 
 import org.junit.Test;
-
 import java.util.Set;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.MatcherAssert.assertThat;
