@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+
 /**
  * The type Analize. класс содержит единственный метод, для анализа списков User
  */
