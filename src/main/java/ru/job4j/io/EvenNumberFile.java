@@ -7,6 +7,16 @@ import java.util.Arrays;
 
 public class EvenNumberFile {
     public static void main(String[] args) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("even.txt");
+            String s = "1\n"
+                    + "5\n"
+                    + "15\n"
+                    + "17";
+            fileOut.write(s.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try (FileInputStream inputFile = new FileInputStream("even.txt")) {
             StringBuilder text =  new StringBuilder();
             int read;
@@ -27,22 +37,6 @@ public class EvenNumberFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-}
-
-class WriteFile {
-    public static void main(String[] args) {
-            try {
-                FileOutputStream fileOut = new FileOutputStream("even.txt");
-                String s = "1\n"
-                       + "5\n"
-                       + "15\n"
-                       + "17";
-                fileOut.write(s.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
     }
 
 }
