@@ -42,8 +42,7 @@ public class LogFilter {
     }
 
     public static void main(String[] args) {
-        try {
-            FileOutputStream   fileOut = new FileOutputStream("log.txt");
+        try (FileOutputStream   fileOut = new FileOutputStream("log.txt")) {
             String s = "0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:18 +0300] \"GET /items/ajax.html HTTP/1.1\" 404 1113\n"
                     + "0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:23 +0300] \"GET /job4j.ru/profile HTTP/1.1\" 302 -\n"
                     + "0:0:0:0:0:0:0:1 - - [19/Feb/2020:15:21:23 +0300] \"GET /job4j.ru/profile/ HTTP/1.1\" 404 1110\n"
