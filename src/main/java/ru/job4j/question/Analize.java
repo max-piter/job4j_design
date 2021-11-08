@@ -2,6 +2,7 @@ package ru.job4j.question;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -32,11 +33,11 @@ public class Analize {
 
         for (User us : current) {
             String previousUserName = usersPrevious.putIfAbsent(us.getId(), us.getName());
-            if (previousUserName != null) {
-                if (!us.getName().equals(previousUserName)) {
-                    countChanged++;
-                }
-            } else {
+             if (previousUserName != null) {
+            if (!Objects.equals(us.getName(), previousUserName)) {
+                countChanged++;
+            }
+        } else {
                     countAdded++;
                 }
             }
