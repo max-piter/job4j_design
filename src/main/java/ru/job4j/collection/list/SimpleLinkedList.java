@@ -58,7 +58,6 @@ public class SimpleLinkedList<E> implements List<E> {
 
             @Override
             public E next() {
-
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }

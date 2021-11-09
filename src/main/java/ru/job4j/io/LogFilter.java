@@ -3,6 +3,7 @@ package ru.job4j.io;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class LogFilter {
     public static List<String> filter(String file) {
@@ -60,6 +61,6 @@ public class LogFilter {
 
         List<String> log = filter("log.txt");
         System.out.println(log);
-        save(log, "404.txt");
+       save(log, "404.txt");
     }
 }
