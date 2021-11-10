@@ -3,7 +3,6 @@ package ru.job4j.io;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 public class LogFilter {
     public static List<String> filter(String file) {
@@ -18,9 +17,9 @@ public class LogFilter {
              */
             String line;
             while ((line = inputFile.readLine()) != null) {
-                if (line.split(" ")[line.split(" ").length - 2].equals("404")) {
-                    listFromFile.add(line);
-                    listFromFile.add(System.lineSeparator());
+                String[] lineFromFile = line.split(" ");
+                if (lineFromFile[lineFromFile.length - 2].equals("404")) {
+                    listFromFile.add(line + "\n");
                 }
             }
         } catch (IOException e) {
