@@ -19,7 +19,7 @@ public class ConfigTest {
     }
 
     @Test
-    public void whenCommentInFile () {
+    public void whenCommentInFile() {
         String path = "/Users/a123/projects/job4j_design/app.properties";
         Config config = new Config(path);
         config.load();
@@ -35,11 +35,11 @@ public class ConfigTest {
         Config config = new Config(path);
         config.load();
         assertThat(config.value("Max"), is("Korovkin"));
-        assertThat(config.value("#Comment"), is(Matchers.nullValue()));
+        assertThat(config.value("# Comment"), is(Matchers.nullValue()));
     }
 
     @Test
-    public void whenPairWithNullKeyAndEmptyString() {
+    public void whenPairWithEmptyString() {
         String path = "/Users/a123/projects/job4j_design/pair_without_comment.properties";
         Config config = new Config(path);
         config.load();
@@ -58,5 +58,11 @@ public class ConfigTest {
         assertThat(config.value("hibernate.connection.password"), is("password"));
     }
 
-
+    @Test(expected = IllegalArgumentException.class)
+    public void whenPairWithNullValue() {
+        String path = "/Users/a123/projects/job4j_design/pair_with_NullValue.properties";
+        Config config = new Config(path);
+        config.load();
+        config.value("Nottingham");
+    }
 }
