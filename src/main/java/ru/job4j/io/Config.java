@@ -28,10 +28,10 @@ public class Config {
     /**
      * Instantiates a new Config - конструктор.
      *
-     * @param p the path - адрес файла, из которого необходимо прочитать инфо
+     * @param pathToFile the path - адрес файла, из которого необходимо прочитать инфо
      */
-    public Config(final String p) {
-        this.path = p;
+    public Config(final String pathToFile) {
+        this.path = pathToFile;
     }
 
     /**
@@ -51,15 +51,12 @@ public class Config {
                             throw new IllegalArgumentException();
                         }
                     })
-                    .collect(Collectors.toMap(k -> k.split("=")[0],
-                            v -> v.split("=")[1])));
+                    .map(line -> line.split("="))
+                    .collect(Collectors.toMap(k -> k[0],
+                            v -> v[1])));
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        for (String el : values.keySet()) {
-            System.out.println(values.get(el));
         }
     }
 
