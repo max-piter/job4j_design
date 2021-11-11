@@ -4,32 +4,45 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogFilter {
-    public static List<String> filter(String file) {
-        List<String> listFromFile = new ArrayList<>();
-        try (BufferedReader inputFile = new BufferedReader(new FileReader(file))) {
+/**
+ * The type Log filter - class for taking information from file.
+ * then filter it and save in another file
+ */
+public final class LogFilter {
 
-            /*
-             * listFromFile =  inputFile.lines()
-             *                   .filter(line -> line.split(" ")[line.split(" ").length - 2].equals("404"))
-             *                   .map(line -> line + "\n")
-             *                   .collect(Collectors.toList());
-             */
+    private LogFilter() { }
+
+    /**
+     * Filter list - method takes String information from file & filters it.
+     *
+     * @param file the file - the path to file
+     * @return the list - filtered list
+     */
+    public static List<String> filter(final String file) {
+        List<String> listFromFile = new ArrayList<>();
+        try (BufferedReader inputFile = new BufferedReader(
+                new FileReader(file))) {
+
             String line;
             while ((line = inputFile.readLine()) != null) {
                 String[] lineFromFile = line.split(" ");
                 if (lineFromFile[lineFromFile.length - 2].equals("404")) {
-                    listFromFile.add(line + "\n");
+                    listFromFile.add(line);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return listFromFile;
     }
 
-    public static void save(List<String> log, String file) {
+    /**
+     * Save - method for saving info in the given file.
+     *
+     * @param log  the log - list of Strings,  we need to save
+     * @param file the file - the path to file, where we need to save our list
+     */
+    public static void save(final List<String> log, final String file) {
         try (PrintWriter fileOut = new PrintWriter(
                 new BufferedOutputStream(
                         new FileOutputStream(file)
@@ -40,9 +53,16 @@ public class LogFilter {
         }
     }
 
-    public static void main(String[] args) {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments - args
+     */
+    public static void main(final String[] args) {
         List<String> log = filter("log.txt");
-        System.out.println(log);
+        for (String line: log) {
+            System.out.println(line);
+        }
        save(log, "404.txt");
     }
 }
