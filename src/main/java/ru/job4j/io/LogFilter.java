@@ -26,7 +26,7 @@ public final class LogFilter {
             String line;
             while ((line = inputFile.readLine()) != null) {
                 String[] lineFromFile = line.split(" ");
-                if (lineFromFile[lineFromFile.length - 2].equals("404")) {
+                if ("404".equals(lineFromFile[lineFromFile.length - 2])) {
                     listFromFile.add(line);
                 }
             }
