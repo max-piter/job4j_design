@@ -1,7 +1,7 @@
 package ru.job4j;
 
 /**
- * Especial  class for tests in jacoco
+ * Especial  class for tests in jacoco.
  */
 
 public class Trigger {

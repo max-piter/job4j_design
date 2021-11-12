@@ -1,11 +1,19 @@
 package ru.job4j;
 
 /**
- * Hello world!
+ * Hello world! - simple aplication.
  *
  */
-public class App {
-    public static void main(String[] args) {
+public final class App {
+
+    private App() { };
+
+    /**
+     * Main - entry point for application.
+     *
+     * @param args the args -  some args
+     */
+    public static void main(final String[] args) {
         System.out.println("Hello World!");
     }
 }

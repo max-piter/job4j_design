@@ -4,30 +4,30 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * класс ForwardLinked реализует контейнер данных  на базе односвязного списка
+ * класс ForwardLinked реализует контейнер данных  на базе односвязного списка.
  * @param <T> the type parameter
  */
 public class ForwardLinked<T> implements Iterable<T> {
 
     /**
-     * ссылка на первый элемент контейнера
+     * ссылка на первый элемент контейнера.
      */
     private Node<T> head;
 
     /**
-     * аddFirst  - метод добавляет элемент в начало списка
+     * аddFirst  - метод добавляет элемент в начало списка.
      * @param value - элемент типа Т
      */
-    public void addFirst(T value) {
+    public void addFirst(final T value) {
         head = new Node<>(value, head);
     }
 
 
     /**
-     * Add. метод добавляет элемент в односвязный список
+     * Add. метод добавляет элемент в односвязный список.
      * @param value  - элемент который необходимо добавить
      */
-    public void add(T value) {
+    public void add(final T value) {
         Node<T> node = new Node<T>(value, null);
         if (head == null) {
             head = node;
@@ -42,7 +42,8 @@ public class ForwardLinked<T> implements Iterable<T> {
 
 
     /**
-     * метод  revert - метод  оборачивает  односвязный список путём замены ссылок
+     * метод  revert - метод  оборачивает  односвязный список.
+     * путём замены ссылок.
      *
      * @return the boolean
      */
@@ -63,7 +64,8 @@ public class ForwardLinked<T> implements Iterable<T> {
 
 
     /**
-     * deleteFirst - метод  удаляет первый элемент с помощью  обнуления ссылки на следующий
+     * deleteFirst - метод  удаляет первый элемент.
+     * с помощью  обнуления ссылки на следующий
      * @return возвращает значение удалённой Ноды
      */
     public T deleteFirst() {
@@ -81,13 +83,13 @@ public class ForwardLinked<T> implements Iterable<T> {
     }
 
     /**
-     * Итератор класса
+     * Итератор класса.
      * @return возвращает текущий элемент
      */
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            Node<T> node = head;
+            private Node<T> node = head;
 
             @Override
             public boolean hasNext() {
@@ -107,16 +109,24 @@ public class ForwardLinked<T> implements Iterable<T> {
     }
 
     /**
-     * Вложенный класс описывает модель данных узла Node
+     * Вложенный класс описывает модель данных узла Node.
      * @param <T> принимает объект коллекции
      */
     private static class Node<T> {
-        T value;
-        Node<T> next;
 
-        public Node(T value, Node<T> next) {
-            this.value = value;
-            this.next = next;
+        /**
+         * The Value - viriable to store the date.
+         */
+        private T value;
+
+        /**
+         * The next - viriable to store address to the next Node.
+         */
+        private Node<T> next;
+
+        Node(final T val, final Node<T> nextNode) {
+            this.value = val;
+            this.next = nextNode;
         }
     }
 }
