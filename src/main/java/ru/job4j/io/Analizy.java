@@ -34,7 +34,7 @@ public class Analizy {
                     } else if (("400".equals(tmp)) || "500".equals(tmp)) {
                         tmp = null;
                         builder.append(arrayFromFile[1]).append(";");
-                        fileOut.write(builder + "\n");
+                        fileOut.println(builder);
                         builder = new StringBuilder();
                     }
 
