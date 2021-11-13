@@ -11,15 +11,37 @@ import java.util.Objects;
  */
 public class SimpleLinkedList<E> implements List<E> {
 
+    /**
+     * count size of the LinkedList.
+     */
     private int size;
+
+    /**
+     * count operations, that changes the List.
+     */
     private int modCount;
+
+    /**
+     * first Node.
+     */
     private Node<E> firstNode;
+
+    /**
+     * Last Node.
+     */
     private Node<E> lastNode;
 
+    /**
+     * public constructor,  to implement SimpleLinkedList.
+     */
     public SimpleLinkedList() { }
 
+    /**
+     * method to add vlue to the List.
+     * @param value the value - value
+     */
     @Override
-    public void add(E value) {
+    public void add(final E value) {
         Node<E> current = lastNode;
         lastNode = new Node<>(value);
         if (current == null && size == 0) {
@@ -32,9 +54,13 @@ public class SimpleLinkedList<E> implements List<E> {
 
     }
 
-
+    /**
+     * method to get value from  the List.
+     * @param index the index - index of the Node
+     * @return returns the value
+     */
     @Override
-    public E get(int index) {
+    public E get(final int index) {
         Objects.checkIndex(index, size);
         Node<E> node = firstNode;
         for (int i = 0; i < index; i++) {
@@ -43,6 +69,10 @@ public class SimpleLinkedList<E> implements List<E> {
         return node.getElement();
     }
 
+    /**
+     * method to iterate throw the List.
+     * @return values of the object
+     */
     @Override
     public Iterator<E> iterator() {
         return new Iterator<>() {
@@ -54,6 +84,7 @@ public class SimpleLinkedList<E> implements List<E> {
             public boolean hasNext() {
                 return point < size;
             }
+
 
 
             @Override
@@ -76,15 +107,25 @@ public class SimpleLinkedList<E> implements List<E> {
 
 
     /**
-     * вложенный класс,  в который оборачивается каждый объект связанного списка
+     * вложенный класс.
+     * в который оборачивается каждый объект связанного списка.
      * @param <E> объекты типа Е
      */
     private static class Node<E> {
-        E element;
-        Node<E> next;
 
-        Node(E element) {
-            this.element = element;
+        /**
+         * value, that we store in the Node.
+         */
+        private E element;
+
+        /**
+         * Node for wrapping value.
+         */
+        private Node<E> next;
+
+
+       Node(final E el) {
+           this.element = el;
         }
 
         public E getElement() {
