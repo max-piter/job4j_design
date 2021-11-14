@@ -35,7 +35,7 @@ public class Analizy {
                         tmp = null;
                         builder.append(arrayFromFile[1]).append(";");
                         fileOut.println(builder);
-                        builder = new StringBuilder();
+                        builder.delete(0, builder.length());
                     }
 
                 }
