@@ -13,8 +13,12 @@ import java.util.function.Predicate;
  */
 public class Search  {
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get("/Users/a123/projects/job4j_design");
-        search(start, p -> p.toFile().getName().endsWith(".js"))
+        if (args.length < 2) {
+            throw new IllegalArgumentException("Root folder is null. Usage java -jar dir.jar ROOT_FOLDER.");
+        }
+        Path start = Paths.get(args[0]);
+        String fileExtension = args[1];
+        search(start, p -> p.toFile().getName().endsWith(fileExtension))
                 .forEach(System.out::println);
     }
 
