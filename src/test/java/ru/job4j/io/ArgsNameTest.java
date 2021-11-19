@@ -29,4 +29,9 @@ public class ArgsNameTest {
     public void whenWrongSomeArgument() {
         ArgsName jvm = ArgsName.of(new String[] {"-enconding=UTF-8", "-Xmx="});
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenWrongPositionOfFirstChar() {
+        ArgsName jvm = ArgsName.of(new String[] {"Xmx=512-", "-encoding=UTF-8"});
+    }
 }

@@ -17,6 +17,11 @@ public class ArgsName {
             throw new IllegalArgumentException("Wrong args");
         } else {
             values = Arrays.stream(args)
+                    .peek(str -> {
+                        if (str.indexOf("-") != 0) {
+                            throw new IllegalArgumentException("Wrong args");
+                        }
+                    })
                     .map(str -> str.substring(1).split("="))
                     .peek(str -> {
                         if (str.length < 2) {
