@@ -34,4 +34,32 @@ public class ArgsNameTest {
     public void whenWrongPositionOfFirstChar() {
         ArgsName jvm = ArgsName.of(new String[] {"Xmx=512-", "-encoding=UTF-8"});
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenAbstenceOfMinus() {
+        ArgsName jvm = ArgsName.of(new String[] {"Xmx=512", "-encoding=UTF-8"});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenTheMinusInstedOfKey() {
+        ArgsName jvm = ArgsName.of(new String[] {"-=512", "-encoding=UTF-8"});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenTheAbsenceOfValue() {
+        ArgsName jvm = ArgsName.of(new String[] {"-Xmx=", "-encoding=UTF-8"});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenTheDubbleEquals() {
+        ArgsName jvm = ArgsName.of(new String[] {"-Xmx==512", "-encoding=UTF-8"});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenTheAbsenseOfEquals() {
+        ArgsName jvm = ArgsName.of(new String[] {"-Xmx-512", "-encoding=UTF-8"});
+    }
+
+
+
 }

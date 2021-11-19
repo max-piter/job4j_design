@@ -24,7 +24,7 @@ public class ArgsName {
                     })
                     .map(str -> str.substring(1).split("="))
                     .peek(str -> {
-                        if (str.length < 2) {
+                        if (str.length != 2 || str[0].equals("")) {
                             throw new IllegalArgumentException("Wrong args");
                         }
                     })
@@ -40,7 +40,7 @@ public class ArgsName {
     }
 
     public static void main(String[] args) {
-        ArgsName jvm = ArgsName.of(new String[] {"-Xmx=512", "-encoding=UTF-8"});
+        ArgsName jvm = ArgsName.of(new String[] {"-Xmx==512", "-encoding=UTF-8"});
         System.out.println(jvm.get("Xmx"));
 
         ArgsName zip = ArgsName.of(new String[] {"-out=project.zip", "-encoding=UTF-8"});
