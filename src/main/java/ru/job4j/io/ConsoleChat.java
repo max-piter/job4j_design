@@ -34,6 +34,7 @@ public class ConsoleChat {
             userQuestion = scanner.nextLine();
             switch (userQuestion) {
                 case ("закончить") ->  {
+                    log.add("User: " + userQuestion);
                     rsl = false;
                 }
 
