@@ -33,13 +33,13 @@ public class ConsoleChat {
         while (rsl) {
             userQuestion = scanner.nextLine();
             switch (userQuestion) {
-                case ("закончить") ->  {
+                case (OUT) ->  {
                     log.add("User: " + userQuestion);
                     rsl = false;
                 }
 
-                case ("стоп") -> {
-                    while ("продолжить".equals(userQuestion)) {
+                case (STOP) -> {
+                    while (CONTINUE.equals(userQuestion)) {
                         log.add("User: " + userQuestion);
                         userQuestion = scanner.nextLine();
                     }
