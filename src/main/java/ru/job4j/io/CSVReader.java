@@ -2,7 +2,6 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.util.*;
-
 import static java.lang.String.*;
 
 public class CSVReader {
