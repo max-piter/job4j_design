@@ -37,7 +37,6 @@ public class Analizy {
                         fileOut.println(builder);
                         builder.delete(0, builder.length());
                     }
-
                 }
         } catch (IOException e) {
             e.printStackTrace();
