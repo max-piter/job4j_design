@@ -18,7 +18,7 @@ public class ArgsName {
         } else {
             values = Arrays.stream(args)
                     .peek(str -> {
-                        if (str.indexOf("-") != 0 && str.indexOf("?") != 0) {
+                        if (str.indexOf("-") != 0) {
                             throw new IllegalArgumentException("Wrong args");
                         }
                     })
