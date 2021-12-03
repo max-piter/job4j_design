@@ -23,6 +23,34 @@ public class HiperSkill {
         PrintWriter printWriter = new PrintWriter(file)) {
            printWriter.print("Lorem ipsum ");
            printWriter.print("dolor sit amet");
+
+//           String str = in.readLine();
+//           System.out.println(str);
+
+
+//
+//           String[] line = str.split("=");
+//           String[] subLine = line[1].split(" ");
+//           String question = subLine[0];
+//           System.out.println(question);
+
+//           switch (question) {
+//               case ("Exit") -> {
+//                   server.close();
+//                   break;
+//               }
+//               case ("Hello") -> {
+//                   out.write("Hello".getBytes());
+//                   break;
+//               }
+//               case ("Any") -> {
+//                   out.write("What".getBytes());
+//                   break;
+//               }
+//               default -> {
+//                   break;
+//               }
+//           }
        }
 
     }
