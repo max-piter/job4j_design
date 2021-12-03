@@ -7,12 +7,18 @@ public class UsageLog4j {
     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
 
     public static void main(String[] args) {
-        String name = "Max, Spb";
+        String name = "Max Korovkin, Spb";
+        char sex = 'M';
+        int age = 45;
+        byte building = 10;
+        short office = 173;
+        long logNumber = 1;
+        boolean isRealLog = false;
+        double percent = 76.6;
+        float rate = 6.6f;
 
-        try {
-            throw new Exception("Not supported code");
-        } catch (Exception e) {
-            LOG.error("Exception in log example, user info name, name: {}",  name, e);
-        }
+        LOG.debug("User info name : {}, age : {}, sex: {}, isRealLog: {},"
+                        + " building: {}, office: {}, logNumber: {}, rate: {}, percent: {}",
+                name, age, sex, isRealLog, building, office, logNumber, rate, percent);
     }
 }
