@@ -14,6 +14,7 @@ public class EchoServer {
     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
 
     public static void main(String[] args) {
+        String name = "Max";
         try {
                 try (ServerSocket server = new ServerSocket(9000)) {
                     while (!server.isClosed()) {
@@ -37,7 +38,7 @@ public class EchoServer {
                     }
                 }
             } catch (IOException e) {
-            LOG.error("Error in connection", e);
+            LOG.error("Error in connection, user info name: {}", name, e);
         }
         }
 }
