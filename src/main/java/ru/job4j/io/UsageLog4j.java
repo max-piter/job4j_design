@@ -7,10 +7,17 @@ public class UsageLog4j {
     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
 
     public static void main(String[] args) {
-        LOG.trace("trace message");
-        LOG.debug("debug message");
-        LOG.info("info message");
-        LOG.warn("warn message");
-        LOG.error("error message");
+        String name = "Max Korovkin, Spb";
+        char sex = 'M';
+        int age = 45;
+        byte building = 10;
+        short office = 173;
+        long logNumber = 1;
+        boolean isRealLog = false;
+        double rate = 6.6;
+
+        LOG.debug("User info name : {}, age : {}, sex: {}, isRealLog: {},"
+                       + " building: {}, office: {}, logNumber: {}, rate: {}",
+                 name, age, sex, isRealLog, building, office, logNumber, rate);
     }
 }
