@@ -31,7 +31,6 @@ public class Main2 {
         try (StringWriter writer = new StringWriter()) {
             marshaller.marshal(ford, writer);
             xml = writer.getBuffer().toString();
-            System.out.println(xml);
             try (FileOutputStream fos = new FileOutputStream("Car2.xml")) {
                 fos.write(xml.getBytes());
             }

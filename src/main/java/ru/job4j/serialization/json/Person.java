@@ -23,6 +23,8 @@ public class Person {
 
     public Person() { }
 
+    public Person(boolean b, int i, Contact contact, String[] strings) { }
+
     public Person(String name, boolean sex, int age, Contact contact, String[] statuses) {
         this.name = name;
         this.sex = sex;
