@@ -15,9 +15,13 @@ public class Main2 {
 
     public static void main(String[] args) throws JAXBException {
 
-        Car ford = new Car("Ford Explorer", true, 4.1, new CarNumber("AD3456-78R"),
-                new Person("John", false, 35, new Contact("11-11-11-11"),
-                        new String[]{"WASP", "widower"}),
+        Car ford = new Car("Ford Explorer", true, 4.1,
+                new CarNumber("AD3456-78R"),
+                new Person("John",
+                        false,
+                        35,
+                        new Contact("11-11-11-11"),
+                        new String[] {"WASP", "widower"}),
                 new String[]{"24.09.2009", "11.09.2014", "29.12.2020"});
 
         JAXBContext context = JAXBContext.newInstance(Car.class);
