@@ -1,14 +1,28 @@
 package ru.job4j.serialization.json;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Arrays;
 
+@XmlRootElement(name = "Car")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Car {
-    private final String model;
+
+    @XmlAttribute
+    private String model;
+
+    @XmlAttribute
     private boolean isColored;
-    private final double engine;
-    private final CarNumber carNumber;
-    private final Person person;
+
+    @XmlAttribute
+    private double engine;
+    private CarNumber carNumber;
+    private Person person;
     private String[] trafficViolations;
+
+    public Car() { }
 
     public Car(String model, boolean isColored, double engine, CarNumber carNumber,
                Person person, String[] trafficViolations) {

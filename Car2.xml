@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Car model="Ford Explorer" isColored="true" engine="4.1">
+    <carNumber carNumber="AD3456-78R"/>
+    <person name="John" age="35">
+        <statuses>
+            <status>WASP</status>
+            <status>widower</status>
+        </statuses>
+    </person>
+    <trafficViolations>24.09.2009</trafficViolations>
+    <trafficViolations>11.09.2014</trafficViolations>
+    <trafficViolations>29.12.2020</trafficViolations>
+</Car>
