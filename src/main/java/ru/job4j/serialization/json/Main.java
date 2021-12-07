@@ -13,9 +13,14 @@ public class Main {
     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
 
     public static void main(String[] args) {
-        final Car mazda = new Car("Mazda", true, 2.6, new CarNumber("AB234567C"),
-                new Person(false, 30, new Contact("11-11-11"),
-               new String[] {"Worker", "Married"}), new String[] {"25.04.2016", "03.08.2020"});
+
+        final Car mazda = new Car("Mazda", true, 2.6,
+                new CarNumber("AB234567C"),
+                new Person(false,
+                        30,
+                        new Contact("11-11-11"),
+                        new String[] {"Worker", "Married"}),
+                new String[] {"25.04.2016", "03.08.2020"});
 
               final Gson gson =  new GsonBuilder().create();
 
