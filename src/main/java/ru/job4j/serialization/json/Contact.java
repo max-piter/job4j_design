@@ -15,7 +15,11 @@ import javax.xml.bind.annotation.XmlRootElement;
         this.phone = phone;
         }
 
-        @Override
+    public String getPhone() {
+        return phone;
+    }
+
+    @Override
         public String toString() {
             return "Contact{"
                     + "phone='" + phone + '\''

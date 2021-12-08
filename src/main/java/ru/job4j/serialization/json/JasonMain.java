@@ -2,6 +2,7 @@ package ru.job4j.serialization.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.io.UsageLog4j;
@@ -19,6 +20,7 @@ public class JasonMain {
                         new String[] {"Worker", "Married"}), new String[] {"25.04.2016", "03.08.2020"});
 
         final Gson gson =  new GsonBuilder().create();
+
 
         try (FileOutputStream fos = new FileOutputStream("test.jason")) {
             fos.write(gson.toJson(mazda).getBytes());

@@ -21,7 +21,7 @@ public class Person {
     @XmlElement(name = "status")
     private String[] statuses;
 
-    public Person() { }
+
 
     public Person(boolean sex, int age, Contact contact, String[] statuses) {
         this.sex = sex;
@@ -36,6 +36,26 @@ public class Person {
         this.age = age;
         this.contact = contact;
         this.statuses = statuses;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isSex() {
+        return sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public String[] getStatuses() {
+        return statuses;
     }
 
     @Override

@@ -15,6 +15,10 @@ public class CarNumber {
         this.carNumber = carNumber;
     }
 
+    public String getCarNumber() {
+        return carNumber;
+    }
+
     @Override
     public String toString() {
         return "CarNumber{"
