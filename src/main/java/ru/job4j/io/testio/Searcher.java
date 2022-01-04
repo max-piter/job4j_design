@@ -18,7 +18,7 @@ public class Searcher {
     private static List<Path> searchResult = new ArrayList<>();
     private static final Pattern DIRECTORY =
             Pattern.compile("[/a-zA-Z0-9\\w]+");
-    private static final Pattern NAME = Pattern.compile("[a-z]+");
+    private static final Pattern NAME = Pattern.compile("[\\w|*]+.[a-z]+");
     private static final Pattern TYPE = Pattern.compile("[a-z]+");
     private static final Pattern FILE = Pattern.compile("[/a-zA-Z0-9\\w .?a-z+]+");
 
