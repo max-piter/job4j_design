@@ -11,7 +11,7 @@ import java.util.function.Predicate;
  * The type Search.
  * - application searches for files only by a certain predicate.
  */
-public class Search  {
+public class Search {
     public static void main(String[] args) throws IOException {
         if (args.length < 2) {
             throw new IllegalArgumentException("Root folder is null. Usage java -jar dir.jar ROOT_FOLDER.");
@@ -37,65 +37,3 @@ public class Search  {
     }
 }
 
-/**
- * The type Search files. - class to set a condition.
- * implements interface  FileVisitor
- */
-class SearchFiles implements FileVisitor<Path> {
-
-    /**
-     * The List. - stores the files.
-     */
-    List<Path> list = new ArrayList<>();
-
-    /**
-     * The Predicate - condition.
-     */
-    Predicate<Path> predicate;
-
-    public SearchFiles(Predicate<Path> condition) {
-        this.predicate = condition;
-    }
-
-    /**
-     * Gets paths - getter.
-     *
-     * @return the paths - returns list with files
-     */
-    public List<Path> getPaths() {
-        return list;
-    }
-
-    @Override
-    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-        return FileVisitResult.CONTINUE;
-    }
-
-
-    /**
-     * visitFile - method, we have to do  while visiting file.
-     * @param file - directory, when we start searching
-     * @param attrs - condition
-     * @return - the next file
-     * @throws IOException - exception
-     */
-    @Override
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
-            throws IOException {
-        if (predicate.test(file)) {
-            list.add(file);
-        }
-
-        return FileVisitResult.CONTINUE;
-    }
-
-    @Override
-    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
-        return FileVisitResult.CONTINUE;
-    }
-
-    @Override
-    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-        return FileVisitResult.CONTINUE;
-    }
-}
