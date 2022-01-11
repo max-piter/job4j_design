@@ -4,18 +4,17 @@ create table crossover(
     model text,
     hp text
     );
-
-insert into cars(name, model, hp) values ('Land Rover', 'Discovery 3', '190');
-insert into cars(name, model, hp) values ('Ford', 'Escape', '131');
-insert into cars(name, model, hp) values ('Nissan', 'X-Trail', '144');	
-select * from cars;
-update cars set name = 'Honda';
-select * from cars;
-delete from cars;
-select * from cars;
-insert into cars(name, model, hp) values ('Land Rover', 'Discovery 4', '245');
-insert into cars(name, model, hp) values ('Land Rover', 'Discovery 3', '190');
-insert into cars(name, model, hp) values ('Nissan', 'X-Trail', '144');
-select * from cars;
-insert into cars(name, model, hp) values ('Ford', 'Escape', '131');
-select * from cars;
+insert into crossover(brand, model, hp) values ('Land Rover', 'Discovery 3', '190');
+insert into crossover(brand, model, hp) values ('Ford', 'Escape', '131');
+insert into crossover(brand, model, hp) values ('Nissan', 'X-Trail', '144');
+select * from crossover;
+update crossover set brand = 'Honda';
+select * from crossover;
+delete from crossover;
+select * from crossover;
+insert into crossover(brand, model, hp) values ('Land Rover', 'Discovery 4', '245');
+insert into crossover(brand, model, hp) values ('Land Rover', 'Discovery 3', '190');
+insert into crossover(brand, model, hp) values ('Nissan', 'X-Trail', '144');
+select * from crossover;
+insert into crossover(brand, model, hp) values ('Ford', 'Escape', '131');
+select * from crossover;
