@@ -4,6 +4,7 @@ create table crossover(
     model text,
     hp text
     );
+
 insert into cars(name, model, hp) values ('Land Rover', 'Discovery 3', '190');
 insert into cars(name, model, hp) values ('Ford', 'Escape', '131');
 insert into cars(name, model, hp) values ('Nissan', 'X-Trail', '144');	
