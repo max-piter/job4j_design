@@ -1,8 +1,10 @@
 insert into users(id, n_name, login, password, phone) values(2, 'Kirill', 'Kor', '321', '123-45-67');
+update users set role_type = 'admin' where id = 1;
+update users set role_type = 'editor' where n_name = 'Kirill';
 
-insert into role(role_type, role_discription, user_id) values('editor', 'edit/delete/add', 1);
-insert into role(role_type, role_discription, user_id) values('admin', 'edit', 1);
-insert into role(role_type, role_discription, user_id) values('user', 'read', 1);
+insert into role(role_type, role_discription) values('editor', 'edit/delete/add');
+insert into role(role_type, role_discription) values('admin', 'edit');
+insert into role(role_type, role_discription) values('user', 'read');
 
 insert into rule(rule_type, rule_description) values('editor rules', 'some editor description..');
 insert into rule(rule_type, rule_description) values('admin rules', 'some admin description..');
@@ -32,7 +34,6 @@ insert into comments(comment_id, item_id, comment_text, comment_date) values(1, 
 insert into comments(comment_id, item_id, comment_text, comment_date) values(2, 2, 'some text', '2022-01-31 09:26:50.12');
 
 insert into attachs(attach_id, item_id) values(1, 1);
-
 
 
 

@@ -3,13 +3,13 @@ create table users (
     n_name varchar(255),
     login varchar(10),
     password varchar(10),
-    phone character varying(20)
+    phone character varying(20),
+    role_type varchar(255) references role(role_type)
 );
 
 create table role (
 role_type varchar(255) primary key,
-role_discription varchar(255),
-user_id int references users(id)
+role_discription varchar(255)
 );
 
 create table rule (
@@ -39,11 +39,6 @@ item_date timestamp not null,
 user_id int references users(id),
 category_type varchar(255) references category(category_type),
 status_type varchar(255) references state(status_type)
-);
-
-create table users_item (
-item_id int references item(item_id),
-user_id int references users(id)
 );
 
 create table comments (
