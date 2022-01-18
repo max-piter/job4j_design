@@ -1,3 +1,8 @@
+create table role (
+role_type varchar(255) primary key,
+role_discription varchar(255)
+);
+
 create table users (
     id serial primary key,
     n_name varchar(255),
@@ -5,11 +10,6 @@ create table users (
     password varchar(10),
     phone character varying(20),
     role_type varchar(255) references role(role_type)
-);
-
-create table role (
-role_type varchar(255) primary key,
-role_discription varchar(255)
 );
 
 create table rule (
