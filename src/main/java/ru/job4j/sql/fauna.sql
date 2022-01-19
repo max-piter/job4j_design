@@ -22,3 +22,7 @@ select * from fauna where n_name like 'Drosophila%';
 select * from fauna where avg_age >= 10000 and avg_age <= 21000;
 select * from fauna where discovery_date = null;
 select * from fauna where discovery_date < '01-01-1950';
+select * from fauna where n_name like '%fish%';
+select * from fauna where n_name like '%muscul%';
+select * from fauna where avg_age between 10000 and  21000;
+
