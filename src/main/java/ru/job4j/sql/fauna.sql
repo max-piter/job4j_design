@@ -25,4 +25,19 @@ select * from fauna where discovery_date < '01-01-1950';
 select * from fauna where n_name like '%fish%';
 select * from fauna where n_name like '%muscul%';
 select * from fauna where avg_age between 10000 and  21000;
+select  n_name from fauna;
+select distinct discovery_date from fauna;
+select * from students;
+select course * 2 from students;
 
+select  n_name || ' - '|| (CURRENT_DATE - discovery_date) / 365 || ' years from discovery' years_from
+from fauna;
+
+select n_name || ' lives: '|| avg_age from fauna;
+select 'It''s my name'  as song dual;
+select * from fauna where n_name < 'steven';
+select * from fauna where discovery_date < '01.01.1800';
+select * from fauna where discovery_date in('01.01.1801')
+select * from fauna  order by avg_age;
+select * from students
+order by name, enroll_date;

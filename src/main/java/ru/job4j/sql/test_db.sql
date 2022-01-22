@@ -1,0 +1,16 @@
+SELECT * FROM INFORMATION_SCHEMA.TABLES;
+select * from students;
+select name, course, speciality from students;
+select * from students where course = 2;
+select * from students where course != 2;
+select * from students where name is null;
+select * from students where name is not null;
+select * from students where enroll_date > '01.09.2020';
+select * from students where name like 'D%';
+select current_date;
+select current_date > '10.09.2020';
+select current_date + interval '1 month';
+select * from students order by name desc;
+select distinct course from students;
+select distinct name from universities;
+select * from students limit 5;

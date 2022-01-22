@@ -51,6 +51,11 @@ from seria_a s  join player p on s.club_name = p.club_name
 where year_of_foundation < 1900
 order by s desc nulls last ;
 
+select p.n_name player, s.club_name club
+from seria_a s  JOIN player p
+ON (s.club_name = p.club_name AND year_of_foundation between 1899 AND 1901);
+
+
 
 
 
