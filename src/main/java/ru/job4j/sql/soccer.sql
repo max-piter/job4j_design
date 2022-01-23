@@ -58,4 +58,3 @@ ON (s.club_name = p.club_name AND year_of_foundation between 1899 AND 1901);
 
 
 
-
