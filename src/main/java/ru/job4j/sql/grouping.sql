@@ -12,7 +12,7 @@ create table new_people(
 create table devices_new_people(
     id serial primary key,
     device_id int references devices(id),
-    people_id int references people(id)
+    people_id int references new_people(id)
 );
 
 insert into devices (n_name, price) values ('Samsung A52', 32000.5);
