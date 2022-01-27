@@ -32,9 +32,11 @@ values
 ('Chevrolet Orlando', 1, 1, 3), ('Volkswagen Polo', 4, 1, 4), ('Opel astra', 2, 1, 1),
 ('Fiat Coupe', 4, 1, 2);
 
-select c.n_name name, type
+select c.n_name name, b.type "body configuration", e.type "engine configuration", t.type "gearbox"
 from
-car c  left join body b on c.body_type = b.id;
+car c  left join body b on c.body_type = b.id
+left join engine e on c.engine_type = e.id
+left join transmission t on c.transmission_type = t.id;
 
 select type, c.n_name name
 from
