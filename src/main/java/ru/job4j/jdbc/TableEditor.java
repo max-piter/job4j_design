@@ -84,7 +84,6 @@ public class TableEditor implements AutoCloseable {
         }
     }
 
-
     public static void main(String[] args) throws Exception {
         String tableName = "first_table";
         String columnName = "first_column";
