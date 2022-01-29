@@ -40,7 +40,7 @@ public class TableEditor implements AutoCloseable {
     }
 
     public void dropTable(String tableName) throws Exception {
-        statement(String.format("DROP TABLE if exists %s", tableName), tableName);
+        statement(String.format("DROP TABLE if exists %s;", tableName), tableName);
     }
 
     public void addColumn(String tableName, String columnName, String type) throws Exception {
@@ -49,12 +49,12 @@ public class TableEditor implements AutoCloseable {
     }
 
     public void dropColumn(String tableName, String columnName) throws Exception {
-        statement(String.format("ALTER TABLE %s DROP column %s", tableName, columnName), tableName);
+        statement(String.format("ALTER TABLE %s DROP column %s;", tableName, columnName), tableName);
 
     }
 
     public void renameColumn(String tableName, String columnName, String newColumnName) throws Exception {
-        statement(String.format("ALTER TABLE %s RENAME column %s to %s", tableName, columnName, newColumnName), tableName);
+        statement(String.format("ALTER TABLE %s RENAME column %s to %s;", tableName, columnName, newColumnName), tableName);
     }
 
 
