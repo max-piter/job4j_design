@@ -1,10 +1,7 @@
 package ru.job4j.spammer;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -26,6 +23,7 @@ public class ImportDB {
         }
         return users;
     }
+
 
 
     public void save(List<User> users) throws ClassNotFoundException, SQLException {
@@ -66,6 +64,7 @@ public class ImportDB {
 
     public static void main(String[] args) throws Exception {
 
+
         Properties cfg = new Properties();
         try (FileInputStream in = new FileInputStream("data/app_spammer.properties")) {
             cfg.load(in);
@@ -73,5 +72,6 @@ public class ImportDB {
 
         ImportDB db = new ImportDB(cfg, "src/main/java/ru/job4j/spammer/dump.txt");
         db.save(db.load());
+
     }
 }
