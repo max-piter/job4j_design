@@ -89,8 +89,8 @@ public class PrepareStatementDemo {
             throwables.printStackTrace();
         }
 
-        for (int i = 0; i < cities.size(); i++) {
-            System.out.println(cities.get(i));
+        for (City city : cities) {
+            System.out.println(city);
         }
         return cities;
     }
@@ -107,10 +107,10 @@ public class PrepareStatementDemo {
             try {
                 PrepareStatementDemo demo = new PrepareStatementDemo(properties);
                 demo.initConnection();
-                //demo.insert(seatle);
-                //demo.insert(spb);
-                //demo.update(moscow);
-                //demo.delete(2);
+                demo.insert(seatle);
+                demo.insert(spb);
+                demo.update(moscow);
+                demo.delete(2);
                 demo.insert(md);
                 demo.findAll();
             } catch (IOException e) {

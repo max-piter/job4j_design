@@ -24,8 +24,6 @@ public class ImportDB {
         return users;
     }
 
-
-
     public void save(List<User> users) throws ClassNotFoundException, SQLException {
         Class.forName(cfg.getProperty("jdbc.driver"));
         try (Connection cnt = DriverManager.getConnection(
