@@ -22,10 +22,10 @@ public class TableEditor implements AutoCloseable {
     }
 
     private void initConnection() throws SQLException, ClassNotFoundException {
-        Class.forName(properties.getProperty("postgres.connection.driver_class"));
-        String url = properties.getProperty("postgres.connection.url");
-        String login = properties.getProperty("postgres.connection.username");
-        String password = properties.getProperty("postgres.connection.password");
+        Class.forName(properties.getProperty("jdbc.driver"));
+        String url = properties.getProperty("jdbc.url");
+        String login = properties.getProperty("jdbc.username");
+        String password = properties.getProperty("jdbc.password");
         connection = DriverManager.getConnection(url, login, password);
     }
 
@@ -33,7 +33,10 @@ public class TableEditor implements AutoCloseable {
         try (Statement statement = connection.createStatement()) {
             statement.execute(querySQL);
         }
-        System.out.println(getTableScheme(connection, tableName));
+
+        /*
+         * System.out.println(getTableScheme(connection, tableName));
+         */
     }
 
     public void createTable(String tableName) throws Exception {
