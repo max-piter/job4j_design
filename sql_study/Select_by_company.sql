@@ -52,3 +52,5 @@ HAVING count(p.n_name) = (select max(sub_table.count) from
 (select count (n_name) as count
  from person
  group by company_id) as sub_table);
+
+select * from p_p;
