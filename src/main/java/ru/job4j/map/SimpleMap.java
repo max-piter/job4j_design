@@ -67,7 +67,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     private void expand() {
         capacity *= 2;
         MapEntry<K, V>[] oldTable = table;
-        table =  new MapEntry[capacity];
+       // table =  new MapEntry[capacity];
         count = 0;
         for (MapEntry<K, V> baket: oldTable) {
             if (baket != null) {

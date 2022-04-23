@@ -10,10 +10,16 @@ public class User {
         this.name = name;
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.printf("Removed %d, %s%n", age, name);
-    }
+    /**
+     * Класс не проходил Maven тесты с этим методом
+     *  @Override
+     *     protected void finalize() throws Throwable {
+     *         System.out.printf("Removed %d, %s%n", age, name);
+     *     }
+     *
+     */
+
+
 
     public int getAge() {
         return age;
