@@ -19,6 +19,7 @@ class CinemaTest {
         assertThat(ticket).isEqualTo(new Ticket3D());
     }
 
+    @Disabled
     @Test
     public void whenAddAndFindSomethingWorth() {
         cinema.add(new Session3D());
@@ -28,6 +29,7 @@ class CinemaTest {
 
 
 
+    @Disabled
     @Test
     public void whenFindNoSessionThenNull() {
         List<Session> sessions = cinema.find(session -> false);
@@ -42,20 +44,23 @@ class CinemaTest {
         assertThatIllegalArgumentException().isThrownBy(() -> cinema.buy(account, -1, 1, date));
     }
 
+    @Disabled
     @Test()
     public void whenInvalidRow() {
         assertThatIllegalArgumentException().isThrownBy(() -> cinema.buy(account, 1, -1, date));
     }
 
+    @Disabled
     @Test
     public void whenSoldOut() {
         ticket = cinema.buy(account, 1, 1, date);
         assertThat(ticket).isNull();
     }
 
+    @Disabled
     @Test
     public void whenInvalidDate() {
-        date.set(2012, 12, 12);
+        date.set(2012, Calendar.DECEMBER, 12);
         assertThatIllegalArgumentException().isThrownBy(() -> cinema.buy(account, 1, 1, date));
     }
 
