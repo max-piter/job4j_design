@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import java.util.*;
@@ -13,6 +15,7 @@ class MaxMinTest {
 
     MaxMin mm = new MaxMin();
 
+    Comparator<Integer> comparator = Integer::compareTo;
     Comparator<Attachment> comparatorForNames = (left, right) -> left.getName().compareTo(right.getName());
 
     Attachment a = new Attachment("E", 150);
@@ -26,14 +29,12 @@ class MaxMinTest {
 
     @Test
     public void testMax() {
-        Comparator<Integer> comparator = Integer::compareTo;
         List<Integer> list = List.of(214, 21, 44, -314, -3, 2435);
         assertThat(new MaxMin().max(list, comparator), is(2435));
     }
 
     @Test
     public void testMin() {
-        Comparator<Integer> comparator = Integer::compareTo;
         List<Integer> list = List.of(214, 21, 44, -314, -3, 2435);
         assertThat(new MaxMin().min(list, comparator), is(-314));
     }
@@ -53,5 +54,9 @@ class MaxMinTest {
         assertThat(mm.min(attachments, comparatorForNames), is(e));
     }
 
+    @Test
+    void whenValueListIsEmpty() {
+        assertThatNullPointerException().isThrownBy(() -> mm.max(List.of(null), comparatorForNames));
+    }
 
 }
