@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import java.util.Calendar;
 import java.util.List;
+import static org.junit.Assert.*;
 
 class CinemaTest {
+
     Cinema cinema = new Cinema3D();
     Calendar date = Calendar.getInstance();
     Account account = new AccountCinema();
@@ -64,8 +66,11 @@ class CinemaTest {
         assertThatIllegalArgumentException().isThrownBy(() -> cinema.buy(account, 1, 1, date));
     }
 
-
-
-
-
+    @Disabled
+    @Test
+    public void whenPlaceIsOccupied() {
+        ticket = cinema.buy(account, 1, 1, date);
+        Ticket ticketForWife =  cinema.buy(account, 1, 1, date);
+        assertNull(ticketForWife);
+    }
 }
