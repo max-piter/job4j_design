@@ -1,9 +1,10 @@
 package ru.job4j.kiss;
 
-import java.util.*;
+import java.util.Comparator;
 import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.*;
+
+
 
 public class MaxMin {
 
@@ -23,12 +24,5 @@ public class MaxMin {
 
     public <T> T min(List<T> value, Comparator<T> comparator) {
             return max(value, comparator.reversed());
-    }
-
-    public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        MaxMin mm =  new MaxMin();
-        Comparator<Integer> comparator = Integer::compareTo;
-        System.out.println(mm.max(list, comparator));
     }
 }

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
