@@ -70,7 +70,6 @@ class CinemaTest {
     @Test
     public void whenPlaceIsOccupied() {
         ticket = cinema.buy(account, 1, 1, date);
-        Ticket ticketForWife =  cinema.buy(account, 1, 1, date);
-        assertNull(ticketForWife);
+        assertThatIllegalArgumentException().isThrownBy(() -> cinema.buy(account, 1, 1, date));
     }
 }
