@@ -1,13 +1,9 @@
 package ru.job4j.srp;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.function.Predicate;
 
 public class ReportEngine implements Report {
-
-    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd:MM:yyyy HH:mm");
-    public Store store;
+    private Store store;
 
     public ReportEngine(Store store) {
         this.store = store;
@@ -17,13 +13,13 @@ public class ReportEngine implements Report {
     public String generate(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
         text.append("Name; Hired; Fired; Salary;")
-                .append(System.lineSeparator());
+                .append(LINE_SEPERATOR);
         for (Employee employee : store.findBy(filter)) {
             text.append(employee.getName()).append(";")
                     .append(DATE_FORMAT.format(employee.getHired().getTime())).append(";")
                     .append(DATE_FORMAT.format(employee.getFired().getTime())).append(";")
                     .append(employee.getSalary()).append(";")
-                    .append(System.lineSeparator());
+                    .append(LINE_SEPERATOR);
         }
         return text.toString();
     }
