@@ -1,6 +1,8 @@
 package ru.job4j.srp;
 
 import java.util.Calendar;
+import java.util.Formatter;
+import java.util.Scanner;
 import java.util.function.Predicate;
 
 public class HTMLReport implements Report {

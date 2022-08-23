@@ -53,14 +53,13 @@ class ReportEngineTest {
     public void whenSalaryInEuroGenerated() {
         store.add(worker);
         AccountingReport ar = new AccountingReport(65, store);
-        char euro = 128;
         StringBuilder expect = new StringBuilder()
                 .append("Name; Hired; Fired; Salary;")
                 .append(LINE_SEPERATOR)
                 .append(worker.getName()).append(";")
                 .append(DATE_FORMAT.format(worker.getHired().getTime())).append(";")
                 .append(DATE_FORMAT.format(worker.getFired().getTime())).append(";")
-                .append(worker.getSalary() * ar.getInEuro()).append(euro).append(";")
+                .append(worker.getSalary() * ar.getInEuro()).append(ar.euro).append(";")
                 .append(LINE_SEPERATOR);
         assertThat(ar.generate(em -> true)).isEqualTo(expect.toString());
     }

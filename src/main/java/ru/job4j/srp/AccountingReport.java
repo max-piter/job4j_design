@@ -6,6 +6,7 @@ public class AccountingReport implements Report {
 
     private Store store;
     private final double inEuro;
+    public final char euro = 128;
 
     public AccountingReport(double euroCourse, Store store) {
         this.inEuro = 1 / euroCourse;
@@ -15,7 +16,6 @@ public class AccountingReport implements Report {
     @Override
     public String generate(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
-        char euro = 128;
         text.append("Name; Hired; Fired; Salary;")
                 .append(LINE_SEPERATOR);
         for (Employee employee: store.findBy(filter)) {
