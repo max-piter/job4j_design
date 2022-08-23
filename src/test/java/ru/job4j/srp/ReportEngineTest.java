@@ -59,7 +59,7 @@ class ReportEngineTest {
                 .append(worker.getName()).append(";")
                 .append(DATE_FORMAT.format(worker.getHired().getTime())).append(";")
                 .append(DATE_FORMAT.format(worker.getFired().getTime())).append(";")
-                .append(worker.getSalary() * ar.getInEuro()).append(ar.euro).append(";")
+                .append(worker.getSalary() * ar.getInEuro()).append(ar.EURO).append(";")
                 .append(LINE_SEPERATOR);
         assertThat(ar.generate(em -> true)).isEqualTo(expect.toString());
     }

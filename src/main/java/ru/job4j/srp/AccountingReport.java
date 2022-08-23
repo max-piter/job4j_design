@@ -6,7 +6,7 @@ public class AccountingReport implements Report {
 
     private Store store;
     private final double inEuro;
-    public final char euro = 128;
+    public static final char EURO = 128;
 
     public AccountingReport(double euroCourse, Store store) {
         this.inEuro = 1 / euroCourse;
@@ -22,7 +22,7 @@ public class AccountingReport implements Report {
             text.append(employee.getName()).append(";")
                     .append(DATE_FORMAT.format(employee.getHired().getTime())).append(";")
                     .append(DATE_FORMAT.format(employee.getFired().getTime())).append(";")
-                    .append(employee.getSalary() * inEuro).append(euro).append(";")
+                    .append(employee.getSalary() * inEuro).append(EURO).append(";")
                     .append(LINE_SEPERATOR);
         }
         return text.toString();
