@@ -1,4 +1,4 @@
-package ru.job4j.srp.wrong;
+package ru.job4j.ood.srp.wrong;
 
 import java.io.FileInputStream;
 import java.io.IOException;

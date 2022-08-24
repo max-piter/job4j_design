@@ -1,4 +1,4 @@
-package ru.job4j.srp.wrong;
+package ru.job4j.ood.srp.wrong;
 
 import java.util.List;
 import java.util.Objects;

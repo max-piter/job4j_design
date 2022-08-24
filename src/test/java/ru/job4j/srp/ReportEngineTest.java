@@ -1,10 +1,12 @@
 package ru.job4j.srp;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.ood.srp.*;
+
 import java.util.Calendar;
 import static org.assertj.core.api.Assertions.*;
-import static ru.job4j.srp.Report.LINE_SEPERATOR;
-import static ru.job4j.srp.ReportEngine.DATE_FORMAT;
+import static ru.job4j.ood.srp.Report.LINE_SEPERATOR;
+import static ru.job4j.ood.srp.ReportEngine.DATE_FORMAT;
 
 
 class ReportEngineTest {
