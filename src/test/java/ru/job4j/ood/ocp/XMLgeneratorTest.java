@@ -5,6 +5,7 @@ import ru.job4j.ood.srp.Employee;
 import ru.job4j.ood.srp.MemStore;
 import ru.job4j.ood.srp.Report;
 
+import javax.xml.bind.JAXBException;
 import java.time.OffsetDateTime;
 import java.util.Calendar;
 
@@ -13,7 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 class XMLgeneratorTest {
 
     @Test
-    public void whenXMLGenerated() {
+    public void whenXMLGenerated() throws JAXBException {
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
         OffsetDateTime date = OffsetDateTime.ofInstant(now.toInstant(), now.getTimeZone().toZoneId());

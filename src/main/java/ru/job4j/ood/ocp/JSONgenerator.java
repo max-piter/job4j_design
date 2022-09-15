@@ -5,8 +5,6 @@ import com.google.gson.GsonBuilder;
 import ru.job4j.ood.srp.Employee;
 import ru.job4j.ood.srp.Report;
 import ru.job4j.ood.srp.Store;
-
-
 import java.util.function.Predicate;
 
 
@@ -16,20 +14,17 @@ import java.util.function.Predicate;
  * используем интерыейс Report из srp package
  */
 public class JSONgenerator implements Report {
-    Store store;
+    private Store store;
+    private Gson lib;
 
     public JSONgenerator(Store store) {
         this.store = store;
+        lib = new GsonBuilder().create();
     }
 
     @Override
     public String generate(Predicate<Employee> filter) {
-        StringBuilder text = new StringBuilder();
-        Gson lib = new GsonBuilder().create();
-        for (Employee employee : store.findBy(filter)) {
-            text.append(lib.toJson(employee)).append(LINE_SEPERATOR);
-        }
-        return text.toString();
+        return lib.toJson(store.findBy(filter));
     }
 }
 

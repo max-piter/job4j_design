@@ -7,7 +7,6 @@ import ru.job4j.ood.srp.Report;
 
 import java.util.Calendar;
 import static org.assertj.core.api.Assertions.*;
-import static ru.job4j.ood.srp.Report.LINE_SEPERATOR;
 
 class JSONgeneratorTest {
 
@@ -21,7 +20,7 @@ class JSONgeneratorTest {
         store.add(worker2);
         Report engine = new JSONgenerator(store);
         StringBuilder expect = new StringBuilder()
-                .append("{\"name\":\"").append(worker.getName()).append("\",")
+                .append("[{\"name\":\"").append(worker.getName()).append("\",")
                 .append("\"hired\":{")
                 .append("\"year\":").append(worker.getHired().get(Calendar.YEAR)).append(",")
                 .append("\"month\":").append(worker.getHired().get(Calendar.MONTH)).append(",")
@@ -36,8 +35,7 @@ class JSONgeneratorTest {
                 .append("\"hourOfDay\":").append(worker.getFired().get(Calendar.HOUR_OF_DAY)).append(",")
                 .append("\"minute\":").append(worker.getFired().get(Calendar.MINUTE)).append(",")
                 .append("\"second\":").append(worker.getFired().get(Calendar.SECOND)).append("},")
-                .append("\"salary\":").append(worker.getSalary()).append("}")
-                .append(LINE_SEPERATOR)
+                .append("\"salary\":").append(worker.getSalary()).append("},")
                 .append("{\"name\":\"").append(worker2.getName()).append("\",")
                 .append("\"hired\":{")
                 .append("\"year\":").append(worker2.getHired().get(Calendar.YEAR)).append(",")
@@ -53,8 +51,7 @@ class JSONgeneratorTest {
                 .append("\"hourOfDay\":").append(worker2.getFired().get(Calendar.HOUR_OF_DAY)).append(",")
                 .append("\"minute\":").append(worker2.getFired().get(Calendar.MINUTE)).append(",")
                 .append("\"second\":").append(worker2.getFired().get(Calendar.SECOND)).append("},")
-                .append("\"salary\":").append(worker2.getSalary()).append("}")
-                .append(LINE_SEPERATOR);
+                .append("\"salary\":").append(worker2.getSalary()).append("}]");
 
         assertThat(engine.generate(emp -> true)).isEqualTo(expect.toString());
     }

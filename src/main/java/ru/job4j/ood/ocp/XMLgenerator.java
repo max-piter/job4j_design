@@ -16,18 +16,20 @@ import java.util.function.Predicate;
 
 public class XMLgenerator implements Report {
 
-    Store store;
+    private Store store;
+    private JAXBContext context;
+    private Marshaller marshaller;
 
-    public XMLgenerator(Store store) {
+    public XMLgenerator(Store store) throws JAXBException {
         this.store = store;
+        context = JAXBContext.newInstance(EmployeeList.class);
+        marshaller = context.createMarshaller();
     }
 
     @Override
     public String generate(Predicate<Employee> filter) {
         String xml = "";
         try {
-            JAXBContext context = JAXBContext.newInstance(EmployeeList.class);
-            Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             try (StringWriter writer = new StringWriter()) {
                 marshaller.marshal(new EmployeeList(store.findBy(filter)), writer);
